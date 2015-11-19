@@ -21,8 +21,13 @@
                 <h:form id="formMenu" prependId="false">
                     <p:menu>
                         <p:submenu label="Cadastros">
-                                                       
-                           
+                             <p:menuitem action="#{controleEstado.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de estados"/>
+                            
+                            <p:menuitem action="#{controleCidade.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de cidades"/>                                                    
                         </p:submenu>
                     </p:menu>
                 </h:form>                        
