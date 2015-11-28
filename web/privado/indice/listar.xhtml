@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">
+            Manutenção de Indices
+        </ui:define>
+        <ui:define name="conteudo">
+            <h:form id="formListagem" prependId="false">
+                <p:growl/>
+                <p:commandButton actionListener="#{controleIndice.novo()}"
+                                 value="Novo"
+                                 oncomplete="PF('dlg').show();" update=":formEdicao"/>
+                <p:dataTable value="#{controleIndice.dao.listarTodos}" var="obj">
+                    <f:facet name="header">
+                        <p:outputLabel value="Listagem de Indices"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <p:outputLabel value="Total de registros: #{controleIndice.dao.listarTodos.size()}"/>
+                    </f:facet>
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{obj.id}"/>
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <p:outputLabel value="#{obj.nome}"/>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <div align="center">
+                            <p:commandButton icon="ui-icon-pencil" id="btnAlterar"
+                                             actionListener="#{controleIndice.editar(obj.id)}"
+                                             oncomplete="PF('dlg').show();" update=":formEdicao"
+                                             process="@form"/>
+                            <p:commandButton icon="ui-icon-trash"
+                                             actionListener="#{controleIndice.remover(obj.id)}"
+                                             update=":formListagem" id="btnExcluir"
+                                             onclick="if (!confirm('Confirma a exclusão do objeto'))
+                                                         return false"/>
+                        </div>
+                        <p:tooltip for="btnAlterar" value="Alterar"/>
+                        <p:tooltip for="btnExcluir" value="Excluir"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>           
+        </ui:define>
+        <ui:define name="dialogos">
+            <p:dialog header="Edição de Indices" widgetVar="dlg"
+                      resizable="false" modal="true">
+                <h:form id="formEdicao"  prependId="false" >
+                    <p:growl/>
+                    <p:panelGrid columns="2">
+                        <f:facet name="footer">
+                            <div align="center">
+                                <p:commandButton value="Salvar"
+                                                 icon="ui-icon-disk"
+                                                 actionListener="#{controleIndice.salvar()}"
+                                                 update=":formListagem :formEdicao"
+                                                 oncomplete="if(!args.validationFailed){PF('dlg').hide();}"/>                                             
+                            </div>
+                        </f:facet>
+                        <p:outputLabel value="ID"/>
+                        <p:inputText value="#{controleIndice.objeto.id}" readonly="true" size="5"/>
+                        <p:outputLabel value="Nome" for="txtNome"/>
+                        <p:inputText id="txtNome" value="#{controleIndice.objeto.nome}"
+                                     size="50" maxlength="50"
+                                     placeholder="Obrigatório"/>
+                    </p:panelGrid>
+                </h:form>  
+                <ui:include src="/templates/ajaxstatus.xhtml"/>
+            </p:dialog>            
+        </ui:define>
+    </ui:composition>
+
+</html>
+

@@ -64,7 +64,7 @@
                                                  oncomplete="if(!args.validationFailed){PF('dlg').hide();}"/>                                             
                             </div>
                         </f:facet>
-                        <p:outputLabel value="id"/>
+                        <p:outputLabel value="ID"/>
                         <p:inputText value="#{controleEstado.objeto.id}" readonly="true" size="5"/>
                         <p:outputLabel value="Nome" for="txtNome"/>
                         <p:inputText id="txtNome" value="#{controleEstado.objeto.nome}"
@@ -73,7 +73,7 @@
                         <p:outputLabel value="UF" for="txtUF"/>
                         <p:inputText id="txtUF"
                                      value="#{controleEstado.objeto.uf}"
-                                     size="2" maxlength="2"/>
+                                     size="3" maxlength="2"/>
                     </p:panelGrid>
                 </h:form>  
                 <ui:include src="/templates/ajaxstatus.xhtml"/>

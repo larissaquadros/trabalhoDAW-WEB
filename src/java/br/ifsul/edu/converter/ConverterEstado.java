@@ -22,7 +22,7 @@ public class ConverterEstado implements Serializable, Converter {
         if (string == null || string.equals("Selecione um registro")) {
             return null;
         }
-        EntityManagerFactory emf =  Persistence.createEntityManagerFactory("DAW-2015-2-5N1-ModelPU");
+        EntityManagerFactory emf =  Persistence.createEntityManagerFactory("Trabalho-DAW-2-Etapa-ModelPU");
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Estado.class, Integer.parseInt(string));

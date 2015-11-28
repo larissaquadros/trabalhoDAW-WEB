@@ -12,7 +12,7 @@
             <h:outputScript library="js" name="scripts.js"/>
         </h:head>
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" header="Sistema com JSF 2.2 e JPA 2.1" 
+            <p:layoutUnit position="north" header="Sistema Imobiliário" 
                           style="text-align: center">                
             </p:layoutUnit>
             <p:layoutUnit position="west" header="Menu"
@@ -27,7 +27,31 @@
                             
                             <p:menuitem action="#{controleCidade.listar()}"
                                         ajax="false"
-                                        value="Manutenção de cidades"/>                                                    
+                                        value="Manutenção de cidades"/> 
+                            
+                            <p:menuitem action="#{controlePessoaFisica.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de pessoa física"/> 
+                            
+                            <p:menuitem action="#{controlePessoaJuridica.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de pessoa jurídica"/> 
+                            
+                            <p:menuitem action="#{controleIndice.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de indíce"/>
+                            
+                            <p:menuitem action="#{controleCaracteristica.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de caracteristicas"/> 
+                            
+                            <p:menuitem action="#{controleCondominio.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de condomínio"/> 
+                            
+                            <p:menuitem action="#{controleImovel.listar()}"
+                                        ajax="false"
+                                        value="Manutenção de imóvel"/> 
                         </p:submenu>
                     </p:menu>
                 </h:form>                        

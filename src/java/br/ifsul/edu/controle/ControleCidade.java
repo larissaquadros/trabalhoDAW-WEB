@@ -2,6 +2,7 @@
 package br.ifsul.edu.controle;
 
 
+
 import br.ifsul.edu.dao.CidadeDao;
 import br.ifsul.edu.dao.EstadoDao;
 import br.ifsul.edu.model.Cidade;
